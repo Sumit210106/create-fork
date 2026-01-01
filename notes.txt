@@ -1,4 +1,4 @@
-STEP — CLI IMPLEMENTATION NOTES (create-stackify)
+STEP — CLI IMPLEMENTATION NOTES (create-fork)
 
 1st —
 #!/usr/bin/env node →
@@ -31,9 +31,9 @@ const program = new Command();
 --------------------------------------------------
 
 4th —
-program.name("create-stackify") →
+program.name("create-fork") →
   - Sets the CLI command name
-  - Users run: npx create-stackify
+  - Users run: npx create-fork
 
 --------------------------------------------------
 

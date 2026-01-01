@@ -25,7 +25,7 @@ const templates = [
 ];
 
 program
-  .name("create-stackify")
+  .name("create-fork")
   .argument("[project-name]")
   .action(async (projectName) => {
     // Ask for project name if not provided
