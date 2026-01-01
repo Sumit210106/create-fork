@@ -13,14 +13,14 @@
 ## Usage
 
 ```bash
-npx create-template
+npx create-stackify
 ```
 
 Or if you prefer the old school way:
 
 ```bash
-npm install -g create-template
-create-template my-app
+npm install -g create-stackify
+create-stackify my-app
 ```
 
 
@@ -31,11 +31,11 @@ I got tired of setting up the same stack over and over. Now I don't have to. Nei
 ## Local Development
 
 ```bash
-git clone https://github.com/yourusername/create-template
-cd create-template
+git clone https://github.com/Sumit210106/create-stackify
+cd create-stackify
 npm install
 npm link
-create-template
+create-stackify
 ```
 
 ## Contributing
