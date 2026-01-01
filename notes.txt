@@ -1,0 +1,140 @@
+STEP — CLI IMPLEMENTATION NOTES (create-stackify)
+
+1st —
+#!/usr/bin/env node →
+  - Tells OS to execute this file using Node.js
+  - Mandatory for CLI commands to work
+
+--------------------------------------------------
+
+2nd —
+
+| Task              | Tool                  |
+| ----------------- | --------------------- |
+| Define CLI        | commander             |
+| Ask user input    | @inquirer/prompts     |
+| Copy templates    | fs-extra              |
+| Resolve paths     | path                  |
+| CLI feedback      | ora                   |
+| Run npm commands  | child_process         |
+
+--------------------------------------------------
+
+3rd —
+commander setup →
+  - Defines CLI name and arguments
+  - Entry point for command execution
+
+Code reference:
+const program = new Command();
+
+--------------------------------------------------
+
+4th —
+program.name("create-stackify") →
+  - Sets the CLI command name
+  - Users run: npx create-stackify
+
+--------------------------------------------------
+
+5th —
+program.argument("[project-name]") →
+  - Optional argument
+  - If not provided, user is prompted
+  - Improves UX (Vite-like behavior)
+
+--------------------------------------------------
+
+6th —
+Project name handling →
+  - Uses argument if passed
+  - Otherwise prompts using input()
+
+Code reference:
+projectName || await input({ ... })
+
+--------------------------------------------------
+
+7th —
+Template selection →
+  - Uses select() from @inquirer/prompts
+  - Shows user-friendly stack options
+  - Returns template folder name (value)
+
+Code reference:
+await select({ message, choices })
+
+--------------------------------------------------
+
+8th —
+Target project path →
+  - Uses process.cwd()
+  - Ensures project is created where command is run
+
+Code reference:
+path.join(process.cwd(), finalProjectName)
+
+--------------------------------------------------
+
+9th —
+Folder existence check →
+  - Prevents overwriting existing directories
+  - Exits CLI safely if folder exists
+
+Code reference:
+fs.existsSync(targetPath)
+
+--------------------------------------------------
+
+10th —
+Template path resolution →
+  - Resolves template folder relative to CLI file
+  - Used to locate correct template directory
+
+Code reference:
+path.join(new URL(".", import.meta.url).pathname, "../templates/...")
+
+--------------------------------------------------
+
+11th —
+Spinner (ora) →
+  - Displays progress during project creation
+  - Improves CLI UX for long operations
+
+Code reference:
+ora("Creating project...").start()
+
+--------------------------------------------------
+
+12th —
+Copy template files →
+  - fs-extra handles recursive directory copy
+  - Copies entire template into new project folder
+
+Code reference:
+fs.copy(templatePath, targetPath)
+
+--------------------------------------------------
+
+13th —
+Install dependencies →
+  - Runs npm install inside generated project
+  - stdio: "inherit" shows npm logs to user
+
+Code reference:
+execSync("npm install", { cwd, stdio })
+
+--------------------------------------------------
+
+14th —
+Final instructions →
+  - Prints next steps for user
+  - Matches standard create-* CLI UX
+
+--------------------------------------------------
+
+15th —
+program.parse() →
+  - Triggers argument parsing and execution
+  - Required for CLI to run
+

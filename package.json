@@ -1,0 +1,30 @@
+{
+  "name": "create-stackify",
+  "version": "1.0.0",
+  "description": "A simple CLI for scaffolding production-ready templates across multiple stacks.",
+  "type": "module",
+  "bin": {
+    "create-stackify": "./bin/index.js"
+  },
+  "keywords": [
+    "cli",
+    "create",
+    "scaffold",
+    "starter",
+    "template",
+    "supabase",
+    "tailwind",
+    "react",
+    "nextjs",
+    "vite",
+    "boilerplate"
+  ],
+  "author": "Sumit Nayak",
+  "license": "MIT",
+  "dependencies": {
+    "@inquirer/prompts": "^8.1.0",
+    "commander": "^14.0.2",
+    "fs-extra": "^11.3.3",
+    "ora": "^9.0.0"
+  }
+}
