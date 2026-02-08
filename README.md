@@ -1,4 +1,4 @@
-# create-template
+# create-fork
 
 > A simple CLI for scaffolding production-ready templates across multiple stacks.
 
